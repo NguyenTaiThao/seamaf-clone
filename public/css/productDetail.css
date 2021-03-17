@@ -1,0 +1,102 @@
+.content .header .title {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.content .breadcrumb-box {
+    padding-top: 15px;
+}
+
+.content .breadcrumb-box .title {
+    color: #333;
+}
+
+.content .breadcrumb-box .breadcrumb a,
+.content .breadcrumb-box .breadcrumb li {
+    color: #777 !important;
+}
+
+.product-detail .image {
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+.product-detail .image img {
+    transition: transform 0.5s ease;
+}
+
+.product-detail .image:hover img {
+    transform: scale(2);
+}
+
+.product-detail .discription .name-box,
+.product-detail .discription .price-box,
+.product-detail .discription .avaibility-box {
+    margin-bottom: 15px;
+}
+
+.product-detail .discription .quantity-box {
+    margin-bottom: 35px;
+}
+
+.product-detail .discription .cart-btn-box {
+    margin-bottom: 35px;
+}
+
+.product-detail .discription .name {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.product-detail .discription .price {
+    font-weight: 900;
+    font-size: 25px;
+    line-height: 1.7;
+}
+
+.product-detail .discription .avaibility,
+.product-detail .discription .text {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.product-detail .discription .avaibility {
+    color: #e83e8c;
+}
+
+.product-detail .discription .cart-btn {
+    width: 190px;
+    height: 45px;
+    background-color: #e83e63;
+    border-radius: 7px;
+    font-weight: 700;
+}
+
+/* CSS FOR QUANTITY  */
+.product-detail .discription .quantity-box input {
+    border-radius: 10px;
+}
+
+.product-detail .discription .quantity-box .text {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+/* CSS FOR DISCRIPTION  */
+.product-detail .discription .discription-text {
+    border-top: solid 1px #777;
+    border-bottom: solid 1px #777;
+    padding: 15px 0px;
+}
+
+.product-detail .discription .shipping-return {
+    border-bottom: solid 1px #777;
+    padding: 15px 0px;
+}
+
+.product-detail .discription .discription-text .toggle-box span,
+.product-detail .discription .shipping-return .toggle-box span {
+    font-size: 14px;
+    font-weight: 650;
+    margin-bottom: 10px;
+}

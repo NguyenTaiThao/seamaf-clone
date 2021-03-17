@@ -1,0 +1,20 @@
+/* CSS FOR LATEST PRODUCT */
+.product-type{
+    text-align: center;
+    padding: 30px 0px 20px 0px;
+}
+
+.product-type .title-text{
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.top-selling-product .row-product{
+    margin-bottom: 20px;
+}
+
+.top-selling-product .row-product:last-child{
+    margin-bottom: 0px;
+}
+

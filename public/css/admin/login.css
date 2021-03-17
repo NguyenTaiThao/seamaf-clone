@@ -1,0 +1,22 @@
+.login-admin {
+    border: solid 1.5px #e7e7e7;
+    border-radius: 15px;
+    padding: 50px;
+    -webkit-box-shadow: 0px 0px 40px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 40px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 40px -8px rgba(0, 0, 0, 0.75);
+    transition: all .2s;
+}
+
+.login-admin:hover {
+    -webkit-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.75);
+}
+
+.login-admin .logo {
+    font-size: 90px;
+    color: #81dafc;
+    opacity: 0.76;
+    margin-bottom: 20px;
+}

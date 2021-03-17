@@ -1,0 +1,86 @@
+.authentication-box {
+    border: solid 0.5px rgba(153, 153, 153, 0.329);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 25px 0px;
+}
+
+.authentication-box .background-img {
+    background-image: url("../assets/img/background.jpg");
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.authentication-box .authentication-form{
+    padding: 25px 0px;
+}
+
+.authentication-box .authentication-form .title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.authentication-box .authentication-form .title span {
+    font-weight: 750;
+    letter-spacing: 2px;
+    color: rgb(37, 37, 37);
+    font-size: 23px;
+}
+
+.authentication-box .authentication-form .form-section .basic-addon {
+    background-color: #fff;
+}
+
+.authentication-box .authentication-form .form-section .basic-addon i {
+    color: #e83e8c;
+}
+
+.authentication-box .authentication-form .form-section .authentication-input {
+    border-left: none;
+    padding-left: 0px;
+}
+
+.authentication-box .authentication-form .form-section .authentication-btn {
+    background-color: #e83e8c;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.authentication-box .authentication-form .form-section .other-auth-text{
+    padding: 25px 0px;
+    text-align: center;
+}
+
+.authentication-box .authentication-form .form-section .other-auth-text span{ 
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.authentication-box .authentication-form .form-section .auth-divider {
+    margin: 15px 0;
+}
+
+.authentication-box .authentication-form .form-section .other-auth-btn{
+    
+}
+
+.authentication-box .authentication-form .form-section .switch-auth{
+    text-align: center;
+}
+
+.authentication-box .authentication-form .form-section .switch-auth span{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.authentication-box .authentication-form .form-section .switch-auth a{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 600px) {
+    .authentication-box .background-img {
+        display: none;
+    }
+}

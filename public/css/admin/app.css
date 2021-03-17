@@ -1,0 +1,59 @@
+.pagination-box nav .pagination{
+    justify-content: center !important;
+}
+
+.navbar-brand {
+}
+
+h1.page-title{
+    color:#5f6468;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.content-box {
+    background-color: #f1f4f7;
+    overflow-y: auto;
+}
+
+.sidebar {
+    padding: 0;
+    height: 100vh;
+    border: solid 1px #f0f0f0;
+}
+
+.sidebar .search {
+    border-bottom: solid 0.5px #f0f0f0;
+    padding: 20px 15px;
+    margin-bottom: 20px;
+}
+
+.sidebar .search input {
+    height: 35px;
+}
+
+.sidebar .nav-item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar i {
+    margin-right: 10px;
+}
+
+.sidebar .nav-item:not(.active) a {
+    color: #30a5ff;
+}
+
+.sidebar .active {
+    background-color: #30a5ff;
+}
+
+.sidebar .active .nav-link {
+    color: #fff;
+}
+
+.sidebar .active:hover > .nav-link {
+    color: #fafdd8;
+}

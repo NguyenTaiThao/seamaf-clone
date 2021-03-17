@@ -15,19 +15,28 @@ class UserManageController extends Controller
         return view('admin.user.userManage', ['data' => $data]);
     }
 
-    public function getAdd(){
+    public function getAdd()
+    {
         return view('admin.user.userAdd');
     }
 
-    public function postAdd(){
+    public function postAdd()
+    {
         return view('admin.user.userAdd');
     }
 
-    public function edit(){
+    public function getEdit(User $user)
+    {
+        return view('admin.user.userEdit', ['data' => $user]);
+    }
+
+    public function postEdit()
+    {
         return view('admin.user.userEdit');
     }
 
-    public function delete(){
+    public function delete()
+    {
         return view('admin.user.userDelete');
     }
 }

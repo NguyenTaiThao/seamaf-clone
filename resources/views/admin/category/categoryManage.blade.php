@@ -45,12 +45,16 @@ $PAGINATION = Config::get('constant.PAGINATION');
                 <td>{{($data->currentPage()-1) *$PAGINATION + $index + 1}}</td>
                 <td>{{$item->name}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary">
-                        <i class="far fa-edit"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger">
-                        <i class="far fa-trash-alt"></i>
-                    </button>
+                    <a href="{{route('category-manage-edit', $item->id)}}">
+                        <button type="button" class="btn btn-primary">
+                            <i class="far fa-edit"></i>
+                        </button>
+                    </a>
+                    <a href="{{route('category-manage-delete', $item->id)}}">
+                        <button type="button" class="btn btn-danger">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </a>
                 </td>
             </tr>
             @endforeach

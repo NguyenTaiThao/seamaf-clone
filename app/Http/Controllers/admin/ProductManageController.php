@@ -15,19 +15,28 @@ class ProductManageController extends Controller
         return view('admin.product.productManage', ['data' => $data]);
     }
 
-    public function getAdd(){
+    public function getAdd()
+    {
         return view('admin.product.productAdd');
     }
 
-    public function postAdd(){
+    public function postAdd()
+    {
         return view('admin.product.productAdd');
     }
 
-    public function edit(){
+    public function getEdit(Product $product)
+    {
+        return view('admin.product.productEdit', ['data' => $product]);
+    }
+
+    public function postEdit()
+    {
         return view('admin.product.productEdit');
     }
 
-    public function delete(){
+    public function delete()
+    {
         return view('admin.product.productDelete');
     }
 }

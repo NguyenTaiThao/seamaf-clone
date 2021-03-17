@@ -62,12 +62,16 @@ $PAGINATION = Config::get('constant.PAGINATION');
                 </td>
                 <td>{{$item->category_id}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary">
-                        <i class="far fa-edit"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger">
-                        <i class="far fa-trash-alt"></i>
-                    </button>
+                    <a href="{{route('product-manage-edit', $item->id)}}">
+                        <button type="button" class="btn btn-primary">
+                            <i class="far fa-edit"></i>
+                        </button>
+                    </a>
+                    <a href="{{route('product-manage-edit', $item->id)}}">
+                        <button type="button" class="btn btn-danger">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </a>
                 </td>
             </tr>
             @endforeach

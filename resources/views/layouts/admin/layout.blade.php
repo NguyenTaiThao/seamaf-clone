@@ -77,21 +77,31 @@ $user = Auth::user();
                         Dashboard
                     </a>
                 </li>
-                <li class="nav-item <?php if ($curRoute->named('user-manage')||
-                                        $curRoute->named('user-manage-add')||
-                                        $curRoute->named('user-manage-edit')) echo 'active'; ?>">
+                <li class="nav-item <?php if (
+                                        $curRoute->named('user-manage') ||
+                                        $curRoute->named('user-manage-add') ||
+                                        $curRoute->named('user-manage-edit')
+                                    ) echo 'active'; ?>">
                     <a class="nav-link" href="{{route('user-manage')}}">
                         <i class="fal fa-user"></i>
                         Quản lý thành viên
                     </a>
                 </li>
-                <li class="nav-item <?php if ($curRoute->named('category-manage')) echo 'active'; ?>">
+                <li class="nav-item <?php if (
+                                        $curRoute->named('category-manage') ||
+                                        $curRoute->named('category-manage-add') ||
+                                        $curRoute->named('category-manage-edit')
+                                    ) echo 'active'; ?>">
                     <a class="nav-link" href="{{route('category-manage')}}">
                         <i class="fal fa-folder"></i>
                         Quản lý danh mục
                     </a>
                 </li>
-                <li class="nav-item <?php if ($curRoute->named('product-manage')) echo 'active'; ?>">
+                <li class="nav-item <?php if (
+                                        $curRoute->named('product-manage') ||
+                                        $curRoute->named('product-manage-add')||
+                                        $curRoute->named('product-manage-edit')
+                                    ) echo 'active'; ?>">
                     <a class="nav-link" href="{{route('product-manage')}}">
                         <i class="fal fa-shopping-bag"></i>
                         Quản lý sản phẩm
@@ -102,4 +112,14 @@ $user = Auth::user();
 
 
             <!-- start content -->
-            <div class="col-md-10 p
+            <div class="col-md-10 px-0 content-box">
+                @yield('content')
+            </div>
+            <!-- end content  -->
+        </div>
+    </div>
+
+
+</body>
+
+</html>

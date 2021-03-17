@@ -28,12 +28,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
-                                    <input required name="prd_name" class="form-control" placeholder="">
+                                    <input required name="prd_name" class="form-control" placeholder="" value="{{$data->name}}">
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label>Giá sản phẩm</label>
-                                    <input required name="prd_price" type="number" min="0" class="form-control">
+                                    <input required name="prd_price" type="number" min="0" class="form-control" value="{{$data->price}}">
                                 </div>
                                 <div class="form-group mt-2">
                                     <label>Bảo hành</label>

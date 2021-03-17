@@ -29,29 +29,29 @@
                         <form role="form" method="post">
                             <div class="form-group mb-2">
                                 <label>Họ & Tên</label>
-                                <input name="user_full" required class="form-control" placeholder="">
+                                <input name="user_full" required class="form-control" value="{{$data->name}}">
                             </div>
                             <div class="form-group mb-2">
                                 <label>Email</label>
-                                <input name="user_mail" required type="email" class="form-control">
+                                <input name="user_mail" required type="email" class="form-control" value="{{$data->email}}">
                             </div>
                             <div class="form-group mb-2">
                                 <label>Mật khẩu</label>
-                                <input name="user_pass" required type="password" class="form-control">
+                                <input name="user_pass" required type="password" class="form-control" disabled>
                             </div>
                             <div class="form-group mb-2">
                                 <label>Nhập lại mật khẩu</label>
-                                <input name="user_re_pass" required type="password" class="form-control">
+                                <input name="user_re_pass" required type="password" class="form-control" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Quyền</label>
                                 <select name="user_level" class="form-control">
-                                    <option value=1>Admin</option>
-                                    <option value=0>Member</option>
+                                    <option value="1" <?php if($data->is_admin) echo "selected"?>>Admin</option>
+                                    <option value="0" <?php if(!$data->is_admin) echo "selected"?>>Member</option>
                                 </select>
                             </div>
                             <div class="mt-3">
-                                <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
+                                <button name="sbm" type="submit" class="btn btn-success">Cập nhật</button>
                                 <button type="reset" class="btn btn-warning">Làm mới</button>
                             </div>
                     </div>

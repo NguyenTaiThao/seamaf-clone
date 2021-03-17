@@ -27,10 +27,10 @@
                         <form role="form" method="post">
                             <div class="form-group">
                                 <label>Tên danh mục:</label>
-                                <input required type="text" name="cat_name" class="form-control" placeholder="Tên danh mục...">
+                                <input required type="text" name="cat_name" class="form-control" placeholder="Tên danh mục..." value="{{$data->name}}">
                             </div>
                             <div class="mt-3">
-                                <button type="submit" name="sbm" class="btn btn-success">Thêm mới</button>
+                                <button type="submit" name="sbm" class="btn btn-success">Cập nhật</button>
                                 <button type="reset" class="btn btn-warning">Làm mới</button>
                             </div>
                     </div>

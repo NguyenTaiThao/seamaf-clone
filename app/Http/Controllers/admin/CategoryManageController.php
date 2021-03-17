@@ -15,19 +15,28 @@ class CategoryManageController extends Controller
         return view('admin.category.categoryManage', ['data' => $data]);
     }
 
-    public function getAdd(){
+    public function getAdd()
+    {
         return view('admin.category.categoryAdd');
     }
 
-    public function postAdd(){
+    public function postAdd()
+    {
         return view('admin.category.categoryAdd');
     }
 
-    public function edit(){
+    public function getEdit(Category $category)
+    {
+        return view('admin.category.categoryEdit', ['data' => $category]);
+    }
+
+    public function postEdit()
+    {
         return view('admin.category.categoryEdit');
     }
 
-    public function delete(){
+    public function delete()
+    {
         return view('admin.category.categoryDelete');
     }
 }

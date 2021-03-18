@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('is_top');
             $table->integer('on_sale');
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }

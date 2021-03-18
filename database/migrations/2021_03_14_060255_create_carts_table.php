@@ -22,7 +22,7 @@ class CreateCartsTable extends Migration
             $table->integer('quantity');
             $table->integer('status');
             $table->timestamps();
-
+            $table->softDeletes();
         });
     }
     /**

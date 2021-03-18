@@ -22,8 +22,8 @@ class ImageSeeder extends Seeder
         for ($i = 0; $i < $limit; $i++) {
             Image::create(
                 [
-                    'path' => strval($i % 10) . ".jpg",
-                    'product_id' => $i % 19 + 1,
+                    'path' => 'products/' . strval($i % 10) . ".jpg",
+                    'product_id' => $i % 20 + 1,
                 ]
             );
         };

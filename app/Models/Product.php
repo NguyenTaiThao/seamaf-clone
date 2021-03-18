@@ -12,7 +12,9 @@ class Product extends Model
 
     use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
 
-    protected $softCascade = [
+    protected $softCascade = ['images'];
+
+    protected $fillable =  [
         'category_id',
         'code',
         'name',
@@ -22,14 +24,13 @@ class Product extends Model
         'on_sale'
     ];
 
-    protected $fillable = [''];
-
     public function image()
     {
         return $this->hasOne(Image::class);
     }
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 }

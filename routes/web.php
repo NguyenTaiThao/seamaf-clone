@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\UserManageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,6 +60,9 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function () {
 
         // dashboard 
         Route::get("/dashboard", [DashboardController::class, 'index'])->name('dashboard');
+        Route::get("/", function () {
+            return Redirect(route('dashboard'));
+        });
 
         //user
         Route::group(['prefix' => 'user-manage'], function () {
@@ -79,14 +83,14 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function () {
 
         // product 
         Route::group(['prefix' => 'product-manage'], function () {
-            
+
             //show
             Route::get('/', [ProductManageController::class, 'index'])->name('product-manage');
-            
+
             //add
             Route::get('/add', [ProductManageController::class, 'getAdd'])->name('product-manage-add');
             Route::post('/add', [ProductManageController::class, 'postAdd']);
-            
+
             //edit
             Route::get('/edit/{product}', [ProductManageController::class, 'getEdit'])->name('product-manage-edit');
             Route::post('/edit/{id}', [ProductManageController::class, 'postEdit']);

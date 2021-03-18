@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use PhpParser\Node\Stmt\Echo_;
 
 class ProductManageController extends Controller
 {
@@ -20,7 +22,8 @@ class ProductManageController extends Controller
 
     public function getAdd()
     {
-        return view('admin.product.productAdd');
+        $categories = Category::all();
+        return view('admin.product.productAdd', ['categories' => $categories]);
     }
 
     public function postAdd(Request $request)
@@ -34,9 +37,17 @@ class ProductManageController extends Controller
             'on_sale' => 'required|in:0,1',
         ]);
 
-        try{
-            Product::create($request->all());
-        }catch(Exception $e){
+        try {
+            $filepath = $request->file('image')->store("public/products");
+
+            DB::beginTransaction();
+            $productId = Product::create($request->all())->id;
+            $image = new Image(['product_id' => $productId, 'path' => $filepath]);
+            $image->save();
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+            dd($e);
             return Redirect(back())->withErrors($e->getMessage())->withInput();
         }
 
@@ -45,7 +56,8 @@ class ProductManageController extends Controller
 
     public function getEdit(Product $product)
     {
-        return view('admin.product.productEdit', ['data' => $product]);
+        $categories = Category::all();
+        return view('admin.product.productEdit', ['data' => $product, 'categories' => $categories]);
     }
 
     public function postEdit(Request $request)
@@ -59,10 +71,10 @@ class ProductManageController extends Controller
             'on_sale' => 'required|in:0,1',
         ]);
 
-        try{
+        try {
             $product = Product::find($request->id);
             $product->update($request->all());
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return Redirect(back())->withErrors($e->getMessage())->withInput();
         }
 

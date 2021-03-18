@@ -53,7 +53,7 @@ $PAGINATION = Config::get('constant.PAGINATION');
                 <td>{{$item->price}}</td>
                 <td>
                     <div class="image">
-                        <img src="{{asset('assets/img/product/'.$item->image->path)}}" class="w-100" alt="">
+                        <img src="{{asset('storage/'.$item->image->path)}}" class="w-100" alt="">
                     </div>
                 </td>
                 <td>

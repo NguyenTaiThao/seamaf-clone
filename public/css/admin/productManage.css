@@ -8,3 +8,15 @@
     border-radius: 7px;
     padding: 3px;
 }
+
+/* CSS FOR ADD PRODUCT  */
+.add-product .image-box{
+    padding-top: 10px;
+}
+
+.add-product .image-box img{
+    border: solid 1.5px #dbdbdb;
+    padding: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}

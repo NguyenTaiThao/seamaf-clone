@@ -10,13 +10,15 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-    use SoftDeletes;
+    use HasFactory, Notifiable,SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
+    protected $softCascade = ['carts'];
 
     protected $fillable = [
         'name',

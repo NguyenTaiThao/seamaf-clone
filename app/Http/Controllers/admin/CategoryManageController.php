@@ -64,7 +64,6 @@ class CategoryManageController extends Controller
         try {
             $category->delete();
         } catch (Exception $e) {
-            dd($e);
             return Redirect(back())->withErrors($e->getMessage());
         }
 

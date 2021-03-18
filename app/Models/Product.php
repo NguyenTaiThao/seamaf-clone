@@ -9,4 +9,27 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
+
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+
+    protected $softCascade = [
+        'category_id',
+        'code',
+        'name',
+        'discription',
+        'price',
+        'is_top',
+        'on_sale'
+    ];
+
+    protected $fillable = [''];
+
+    public function image()
+    {
+        return $this->hasOne(Image::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

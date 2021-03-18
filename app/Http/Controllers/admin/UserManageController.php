@@ -15,7 +15,7 @@ class UserManageController extends Controller
 {
     public function index()
     {
-        $data = User::paginate(Config::get('constant.PAGINATION'));
+        $data = User::orderBy('id', 'desc')->paginate(Config::get('constant.PAGINATION'));
         return view('admin.user.userManage', ['data' => $data]);
     }
 
@@ -33,10 +33,10 @@ class UserManageController extends Controller
             'is_admin' => 'required',
         ]);
 
-        try{
+        try {
             $user = new User($request->all());
             $user->save();
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return Redirect(back())->withErrors($e->getMessage())->withInput();
         }
 
@@ -64,12 +64,12 @@ class UserManageController extends Controller
 
     public function delete(User $user)
     {
-        if ($user->id == Auth::user()->id){
+        if ($user->id == Auth::user()->id) {
             return Redirect(route('user-manage'))->withErrors(["You can't remove your own account."]);
-        }else{
-            try{
+        } else {
+            try {
                 $user->delete();
-            }catch(Exception $e){
+            } catch (Exception $e) {
                 return Redirect(route('user-manage'))->withErrors($e->getMessage());
             }
         }

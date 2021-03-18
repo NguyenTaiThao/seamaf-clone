@@ -13,7 +13,7 @@ class CategoryManageController extends Controller
 {
     public function index()
     {
-        $data = Category::paginate(Config::get('constant.PAGINATION'));
+        $data = Category::orderBy('id', 'desc')->paginate(Config::get('constant.PAGINATION'));
         return view('admin.category.categoryManage', ['data' => $data]);
     }
 

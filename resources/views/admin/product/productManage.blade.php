@@ -60,7 +60,7 @@ $PAGINATION = Config::get('constant.PAGINATION');
                     <span class="badge bg-success">sale</span>
                     @endif
                 </td>
-                <td>{{$item->category_id}}</td>
+                <td>{{$item->category->name}}</td>
                 <td>
                     <a href="{{route('product-manage-edit', $item->id)}}">
                         <button type="button" class="btn btn-primary">

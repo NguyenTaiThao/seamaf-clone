@@ -5,7 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
 
 class UserManageController extends Controller
 {
@@ -20,9 +22,18 @@ class UserManageController extends Controller
         return view('admin.user.userAdd');
     }
 
-    public function postAdd()
+    public function postAdd(Request $request)
     {
-        return view('admin.user.userAdd');
+        $request->validate([
+            'name' => "required|min:8|max:255",
+            'email' => "required|email|unique:users",
+            'password' => 'required|min:8|confirmed',
+            'is_admin' => 'required',
+        ]);
+
+        $user = new User($request->all());
+        $user->save();
+        return Redirect(route('user-manage'));
     }
 
     public function getEdit(User $user)
@@ -30,13 +41,27 @@ class UserManageController extends Controller
         return view('admin.user.userEdit', ['data' => $user]);
     }
 
-    public function postEdit()
+    public function postEdit(Request $request)
     {
-        return view('admin.user.userEdit');
+        $request->validate([
+            'name' => "required|min:8|max:255",
+            'email' => "required|email|unique:users,email," . $request->id,
+            'is_admin' => 'required',
+        ]);
+
+        $user = User::find($request->id);
+        $user->update($request->all());
+
+        return Redirect(route('user-manage'));
     }
 
-    public function delete()
+    public function delete(User $user)
     {
-        return view('admin.user.userDelete');
+        if ($user->id == Auth::user()->id){
+            return Redirect(route('user-manage'))->withErrors(["You can't remove your own account."]);
+        }else{
+            $user->delete();
+        }
+        return Redirect(route('user-manage'));
     }
 }

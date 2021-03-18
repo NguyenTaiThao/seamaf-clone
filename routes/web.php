@@ -74,7 +74,7 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function () {
             Route::post('/edit/{id}', [UserManageController::class, 'postEdit']);
 
             //delete
-            Route::post('/delete/{id}', [UserManageController::class, 'delete'])->name('user-manage-delete');
+            Route::get('/delete/{user}', [UserManageController::class, 'delete'])->name('user-manage-delete');
         });
 
         // product 

@@ -26,6 +26,13 @@ $PAGINATION =  Config::get('constant.PAGINATION')
         <h1 class="page-title">Quản lý tài khoản</h1>
     </div>
 
+    @if ($errors->any())
+    <div class="row">
+        <div class="alert alert-danger text-center">
+            {{$errors->all()[0]}}
+        </div>
+    </div>
+    @endif
 
     <div class="row item-manage container">
         <div class="px-0 mb-3">

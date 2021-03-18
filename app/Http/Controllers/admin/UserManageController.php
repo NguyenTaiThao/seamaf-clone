@@ -67,7 +67,11 @@ class UserManageController extends Controller
         if ($user->id == Auth::user()->id){
             return Redirect(route('user-manage'))->withErrors(["You can't remove your own account."]);
         }else{
-            $user->delete();
+            try{
+                $user->delete();
+            }catch(Exception $e){
+                return Redirect(route('user-manage'))->withErrors($e->getMessage());
+            }
         }
         return Redirect(route('user-manage'));
     }

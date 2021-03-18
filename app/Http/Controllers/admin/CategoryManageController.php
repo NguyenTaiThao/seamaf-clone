@@ -49,10 +49,10 @@ class CategoryManageController extends Controller
             'name' => 'required|min:3|max:255|unique:categories,name,' . $request->id,
         ]);
 
-        try{
+        try {
             $category = Category::find($request->id);
             $category->update($request->all());
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return Redirect(back())->withErrors($e->getMessage());
         }
 
@@ -61,11 +61,13 @@ class CategoryManageController extends Controller
 
     public function delete(Category $category)
     {
-        try{
+        try {
             $category->delete();
-        }catch(Exception $e){
+        } catch (Exception $e) {
+            dd($e);
             return Redirect(back())->withErrors($e->getMessage());
         }
-        return view('admin.category.categoryDelete');
+
+        return Redirect(route('category-manage'));
     }
 }

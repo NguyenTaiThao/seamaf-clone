@@ -110,7 +110,7 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function () {
             Route::post('/edit/{id}', [CategoryManageController::class, 'postEdit']);
 
             //delete
-            Route::post('/delete/{category}', [CategoryManageController::class, 'delete'])->name('category-manage-delete');
+            Route::get('/delete/{category}', [CategoryManageController::class, 'delete'])->name('category-manage-delete');
         });
     });
 });

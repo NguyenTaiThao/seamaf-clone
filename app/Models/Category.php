@@ -9,8 +9,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use HasFactory, SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+    
+    protected $softCascade = ['products'];
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'name',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

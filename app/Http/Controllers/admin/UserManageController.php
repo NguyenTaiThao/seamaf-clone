@@ -30,7 +30,7 @@ class UserManageController extends Controller
             'name' => "required|min:8|max:255",
             'email' => "required|email|unique:users",
             'password' => 'required|min:8|confirmed',
-            'is_admin' => 'required',
+            'is_admin' => 'required|in:0,1',
         ]);
 
         try {
@@ -53,7 +53,7 @@ class UserManageController extends Controller
         $request->validate([
             'name' => "required|min:8|max:255",
             'email' => "required|email|unique:users,email," . $request->id,
-            'is_admin' => 'required',
+            'is_admin' => 'required|in:0,1',
         ]);
 
         $user = User::find($request->id);

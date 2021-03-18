@@ -67,7 +67,7 @@ $PAGINATION = Config::get('constant.PAGINATION');
                             <i class="far fa-edit"></i>
                         </button>
                     </a>
-                    <a href="{{route('product-manage-edit', $item->id)}}">
+                    <a href="{{route('product-manage-delete', $item->id)}}">
                         <button type="button" class="btn btn-danger">
                             <i class="far fa-trash-alt"></i>
                         </button>

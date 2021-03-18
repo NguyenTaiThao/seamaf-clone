@@ -89,10 +89,10 @@ Route::group(["prefix" => "admin", "namespace" => "admin"], function () {
             
             //edit
             Route::get('/edit/{product}', [ProductManageController::class, 'getEdit'])->name('product-manage-edit');
-            Route::post('/edit/{product}', [ProductManageController::class, 'postEdit']);
+            Route::post('/edit/{id}', [ProductManageController::class, 'postEdit']);
 
             //delete
-            Route::post('/delete/{id}', [ProductManageController::class, 'delete'])->name('product-manage-delete');
+            Route::get('/delete/{product}', [ProductManageController::class, 'delete'])->name('product-manage-delete');
         });
 
         //category

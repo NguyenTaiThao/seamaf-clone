@@ -4,8 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
+use PhpParser\Node\Stmt\Echo_;
 
 class ProductManageController extends Controller
 {
@@ -20,9 +23,24 @@ class ProductManageController extends Controller
         return view('admin.product.productAdd');
     }
 
-    public function postAdd()
+    public function postAdd(Request $request)
     {
-        return view('admin.product.productAdd');
+        $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'name' => 'required|unique:products|',
+            'discription' => 'required',
+            'price' => 'required|gte:0',
+            'is_top' => 'required|in:0,1',
+            'on_sale' => 'required|in:0,1',
+        ]);
+
+        try{
+            Product::create($request->all());
+        }catch(Exception $e){
+            return Redirect(back())->withErrors($e->getMessage())->withInput();
+        }
+
+        return Redirect(route('product-manage'));
     }
 
     public function getEdit(Product $product)
@@ -30,13 +48,35 @@ class ProductManageController extends Controller
         return view('admin.product.productEdit', ['data' => $product]);
     }
 
-    public function postEdit()
+    public function postEdit(Request $request)
     {
-        return view('admin.product.productEdit');
+        $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'name' => 'required|unique:products|',
+            'discription' => 'required',
+            'price' => 'required|gte:0',
+            'is_top' => 'required|in:0,1',
+            'on_sale' => 'required|in:0,1',
+        ]);
+
+        try{
+            $product = Product::find($request->id);
+            $product->update($request->all());
+        }catch(Exception $e){
+            return Redirect(back())->withErrors($e->getMessage())->withInput();
+        }
+
+        return Redirect(route('product-manage'));
     }
 
-    public function delete()
+    public function delete(Product $product)
     {
-        return view('admin.product.productDelete');
+        try {
+            $product->delete();
+        } catch (Exception $e) {
+            return Redirect(back())->withErrors($e->getMessage());
+        }
+
+        return Redirect(route('product-manage'));
     }
 }

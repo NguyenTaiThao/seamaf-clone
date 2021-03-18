@@ -25,9 +25,19 @@
                     <div class="col-md-8">
                         <?php if (isset($error)) echo $error ?>
                         <form role="form" method="post">
+                            @csrf
+                            @if($errors->any())
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger text-center">
+                                        {{$errors->all()[0]}}
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label>Tên danh mục:</label>
-                                <input required type="text" name="cat_name" class="form-control" placeholder="Tên danh mục..." value="{{$data->name}}">
+                                <input required type="text" name="name" class="form-control" placeholder="Tên danh mục..." value="{{$data->name}}">
                             </div>
                             <div class="mt-3">
                                 <button type="submit" name="sbm" class="btn btn-success">Cập nhật</button>

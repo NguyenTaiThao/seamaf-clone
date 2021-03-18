@@ -43,13 +43,29 @@ class CategoryManageController extends Controller
         return view('admin.category.categoryEdit', ['data' => $category]);
     }
 
-    public function postEdit()
+    public function postEdit(Request $request)
     {
-        return view('admin.category.categoryEdit');
+        $request->validate([
+            'name' => 'required|min:3|max:255|unique:categories,name,' . $request->id,
+        ]);
+
+        try{
+            $category = Category::find($request->id);
+            $category->update($request->all());
+        }catch(Exception $e){
+            return Redirect(back())->withErrors($e->getMessage());
+        }
+
+        return Redirect(route('category-manage'));
     }
 
-    public function delete()
+    public function delete(Category $category)
     {
+        try{
+            $category->delete();
+        }catch(Exception $e){
+            return Redirect(back())->withErrors($e->getMessage());
+        }
         return view('admin.category.categoryDelete');
     }
 }

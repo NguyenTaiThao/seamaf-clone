@@ -31,8 +31,10 @@
                             <!-- show error  -->
                             @if ($errors->any())
                             <div class="row">
-                                <div class="alert alert-danger text-center">
-                                    {{$errors->all()[0]}}
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger text-center">
+                                        {{$errors->all()[0]}}
+                                    </div>
                                 </div>
                             </div>
                             @endif
@@ -56,8 +58,8 @@
                             <div class="form-group">
                                 <label>Quyền</label>
                                 <select name="is_admin" class="form-control" value="{{}}">
-                                    <option <?php if(old('is_admin') == 1) echo "selected"; ?> value=1>Admin</option>
-                                    <option <?php if(old('is_admin') == 0) echo "selected"; ?> value=0>Member</option>
+                                    <option <?php if (old('is_admin') == 1) echo "selected"; ?> value=1>Admin</option>
+                                    <option <?php if (old('is_admin') == 0) echo "selected"; ?> value=0>Member</option>
                                 </select>
                             </div>
                             <div class="mt-3">

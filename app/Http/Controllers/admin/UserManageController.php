@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Error;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -31,8 +33,13 @@ class UserManageController extends Controller
             'is_admin' => 'required',
         ]);
 
-        $user = new User($request->all());
-        $user->save();
+        try{
+            $user = new User($request->all());
+            $user->save();
+        }catch(Exception $e){
+            return Redirect(back())->withErrors($e->getMessage())->withInput();
+        }
+
         return Redirect(route('user-manage'));
     }
 

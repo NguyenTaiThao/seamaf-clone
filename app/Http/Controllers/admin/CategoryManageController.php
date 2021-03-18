@@ -4,8 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryManageController extends Controller
 {
@@ -20,9 +22,20 @@ class CategoryManageController extends Controller
         return view('admin.category.categoryAdd');
     }
 
-    public function postAdd()
+    public function postAdd(Request $request)
     {
-        return view('admin.category.categoryAdd');
+        $request->validate([
+            'name' => 'required|min:3|max:255|unique:categories',
+        ]);
+
+        try {
+            Category::create($request->all());
+        } catch (Exception $e) {
+            dd($e);
+            return Redirect(back())->withErrors($e->getMessage())->withInput();
+        }
+
+        return Redirect(route('category-manage'));
     }
 
     public function getEdit(Category $category)

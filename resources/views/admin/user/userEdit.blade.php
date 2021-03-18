@@ -30,8 +30,10 @@
                             @csrf
                             @if ($errors->any())
                             <div class="row">
-                                <div class="alert alert-danger text-center">
-                                    {{$errors->all()[0]}}
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger text-center">
+                                        {{$errors->all()[0]}}
+                                    </div>
                                 </div>
                             </div>
                             @endif

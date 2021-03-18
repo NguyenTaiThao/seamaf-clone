@@ -1,0 +1,10 @@
+.product-manage{
+    overflow-y: auto;
+}
+
+.product-manage .image{
+    width: 200px;
+    border: solid 1.5px #dbdbdb;
+    border-radius: 7px;
+    padding: 3px;
+}

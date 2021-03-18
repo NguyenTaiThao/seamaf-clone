@@ -25,7 +25,7 @@ $PAGINATION = Config::get('constant.PAGINATION');
     </div>
 
 
-    <div class="row user-manage container">
+    <div class="row category-manage container">
         <div class="px-0 mb-3">
             <a href="{{route('category-manage-add')}}">
                 <button type="button" class="btn btn-success">

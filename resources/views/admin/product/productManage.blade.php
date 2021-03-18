@@ -27,7 +27,7 @@ $PAGINATION = Config::get('constant.PAGINATION');
     </div>
 
 
-    <div class="row user-manage container">
+    <div class="row product-manage container">
         <div class="px-0 mb-3">
             <a href="{{route('product-manage-add')}}">
                 <button type="button" class="btn btn-success">
@@ -51,7 +51,11 @@ $PAGINATION = Config::get('constant.PAGINATION');
                 <td>{{($data->currentPage()-1)*$PAGINATION + $index + 1}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->price}}</td>
-                <td></td>
+                <td>
+                    <div class="image">
+                        <img src="{{asset('assets/img/product/'.$item->image->path)}}" class="w-100" alt="">
+                    </div>
+                </td>
                 <td>
                     @if($item->is_top)
                     <span class="badge bg-danger">hot</span>

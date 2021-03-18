@@ -14,7 +14,7 @@ class ProductManageController extends Controller
 {
     public function index()
     {
-        $data = Product::with('category')->orderBy('id', 'desc')->paginate(Config::get('constant.PAGINATION'));
+        $data = Product::with(['category', 'image'])->orderBy('id', 'desc')->paginate(Config::get('constant.PAGINATION'));
         return view('admin.product.productManage', ['data' => $data]);
     }
 

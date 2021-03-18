@@ -28,6 +28,7 @@ $user = Auth::user();
     <link rel="stylesheet" href="assets/fontawesome-pro-5.15.1-web/css/all.min.css">
     <link rel="stylesheet" href="css/admin/app.css">
     <link rel="stylesheet" href="css/admin/dashboard.css">
+    <link rel="stylesheet" href="css/admin/productManage.css">
 
 
     <!-- inlude javascript -->

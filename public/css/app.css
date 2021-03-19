@@ -66,6 +66,16 @@ a{
     color: red !important;
 }
 
+ul.sub-menu-list {
+    padding:0;
+    height: 60vh;
+    overflow-x: auto;
+}
+
+.sub-menu-list li.sub-menu-item {
+    list-style-type: none;
+}
+
 /* CSS FOR SLIDER */
 .slider .carousel-caption {
     bottom: 40%;

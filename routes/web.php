@@ -5,8 +5,10 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductManageController;
 use App\Http\Controllers\admin\UserManageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomePageController::class, 'index'])->name("homepage");
 
 Route::get('/product-detail/{product}', [ProductController::class, 'index'])->name("product-detail");
+
+Route::get('/category/{category}', [CategoryController::class, 'index'])->name("category");
 
 Route::get('/sign-up', function () {
     return view('authentication.signUp');

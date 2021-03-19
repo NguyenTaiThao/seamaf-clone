@@ -7,18 +7,15 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link menu-item active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link menu-item active" aria-current="page" href="{{route('homepage')}}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link menu-item dropdown-toggle" id="ourshoptoggle" data-bs-toggle="dropdown" aria-expanded="false" href="#">Our Shop</a>
                     <div class="dropdown-menu" aria-labelledby="ourshoptoggle">
-                        <ul>
-                            <li><a class="dropdown-item" href="#">Keyholders</a></li>
-                            <li><a class="dropdown-item" href="#">Bags</a></li>
-                            <li><a class="dropdown-item" href="#">Beads</a></li>
-                            <li><a class="dropdown-item" href="#">Chains</a></li>
-                            <li><a class="dropdown-item" href="#">Findings</a></li>
-                            <li><a class="dropdown-item" href="#">Parking</a></li>
+                        <ul class="sub-menu-list">
+                            @foreach($categories as $category)
+                            <li class="sub-menu-item"><a class="dropdown-item" href="{{route('category', $category->id)}}">{{$category->name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>

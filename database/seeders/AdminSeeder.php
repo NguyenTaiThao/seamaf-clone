@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use App\Models\User as User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
-class UserSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,18 +17,20 @@ class UserSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        $limit = 20;
+
+        $limit = 5;
 
         for ($i = 0; $i < $limit; $i++) {
-            User::create(
+            Admin::create(
                 [
                     'id' => $i + 1,
-                    'name' => "Nguyen Tai Thao " . $i,
-                    'password' => bcrypt("12345678"),
-                    'email' => 'user' . strval($i + 1) . "@gmail.com",
+                    'name' => "Admin " . $i,
+                    'email' => 'admin' . strval($i + 1) . "@gmail.com",
+                    'password' => Hash::make('12345678'),
                 ]
             );
         };
+
         Schema::enableForeignKeyConstraints();
     }
 }

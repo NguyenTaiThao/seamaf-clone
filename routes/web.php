@@ -5,11 +5,10 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductManageController;
 use App\Http\Controllers\admin\UserManageController;
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\AuthController as ControllersAuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
-use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
@@ -33,13 +32,9 @@ Route::get('/product-detail/{product}', [ProductController::class, 'index'])->na
 
 Route::get('/category/{category}', [CategoryController::class, 'index'])->name("category");
 
-Route::get('/sign-up', function () {
-    return view('authentication.signUp');
-})->name("sign-up");
+Route::get('/sign-up', [ControllersAuthController::class, 'signUp'])->name("sign-up");
 
-Route::get('/sign-in', function () {
-    return view('authentication.signIn');
-})->name('sign-in');
+Route::get('/sign-in', [ControllersAuthController::class, 'signIn'])->name('sign-in');
 
 Route::get('/cart', function () {
     return view('cart.cart');

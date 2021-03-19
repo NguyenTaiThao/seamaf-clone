@@ -32,10 +32,10 @@
                     <a class="nav-link menu-item" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-item" href="{{asset('sign-in')}}">Sign In</a>
+                    <a class="nav-link menu-item" href="{{route('sign-in')}}">Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-item" href="{{asset('sign-up')}}">Sign Up</a>
+                    <a class="nav-link menu-item" href="{{route('sign-up')}}">Sign Up</a>
                 </li>
             </ul>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\admin\auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -38,13 +38,8 @@ class AuthController extends Controller
             'email' => 'bail|required|email',
             'password' => 'bail|required|min:8',
         ]);
-        $authData = [
-            'email' => $request->email,
-            'password' => $request->password,
-            'is_admin' => 1,
-        ];
-
-        if (Auth::attempt($authData)) {
+        $credentials = $request->only(['email', 'password']);
+        if (Auth::guard('admin')->attempt($credentials)) {
             return Redirect(route('dashboard'));
         } else {
             return Redirect(route('admin-login'))

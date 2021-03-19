@@ -1,8 +1,9 @@
 @extends("layouts.layout")
 
 <?php
-$slideNum = 3;
+$count = count($latestPrds);
 $itemNum = 4;
+$slideNum = ceil($count / $itemNum);
 ?>
 
 @section('content')
@@ -24,11 +25,11 @@ $itemNum = 4;
 
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                @for($i=0; $i<$slideNum; $i++) <div class="carousel-item {{$i==0 ? 'active' :''}}" data-bs-interval="{{$i!=2 ? '3000' : ''}}">
+                @for($i=0; $i<$slideNum; $i++) <div class="carousel-item {{$i==0 ? 'active' :''}}" data-bs-interval="{{$i!=$slideNum-1 ||$i!=0 ? '3000' : ''}}">
                     <div class="row justify-content-center">
                         <div class="col-md-9">
                             <div class="row justify-content-between">
-                                @for($j = $i*$itemNum; $j < ($i+1)*$itemNum; $j++) <div class="col-md-3 col-6">
+                                @for($j = $i*$itemNum; $j < ($i+1)*$itemNum && $j < $count; $j++) <div class="col-md-3 col-6">
                                     <a href="{{route('product-detail',$latestPrds[$j]->id)}}">
                                         <div class="product-item">
                                             <div class="image">

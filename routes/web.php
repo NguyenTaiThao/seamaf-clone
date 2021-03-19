@@ -27,9 +27,7 @@ use Illuminate\Support\Facades\Route;
 // CLIENT ROUTE
 Route::get('/', [HomePageController::class, 'index'])->name("homepage");
 
-Route::get('/product-detail/{product}', function () {
-    return view('product.productDetail');
-})->name("product-detail");
+Route::get('/product-detail/{product}', [ProductController::class, 'index'])->name("product-detail");
 
 Route::get('/sign-up', function () {
     return view('authentication.signUp');

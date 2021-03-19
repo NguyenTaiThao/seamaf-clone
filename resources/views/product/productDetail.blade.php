@@ -1,5 +1,10 @@
 @extends("layouts.layout")
 
+<?php
+$itemNum = 4;
+$slideNum = ceil(count($relatedPrds) / $itemNum);
+?>
+
 @section('content')
 <div class="content product-detail-screen">
     <!-- start breadcrumb -->
@@ -28,11 +33,11 @@
                 </div>
                 <div class="col-md-6 discription">
                     <div class="row name-box">
-                        <span class="name">CHIPPED SHELL BEADS</span>
+                        <span class="name text-uppercase">{{$data->name}}</span>
                     </div>
                     <div class="row align-items-center">
                         <div class="col-md-12 col-6 price-box">
-                            <span class="price">$4.00</span>
+                            <span class="price">${{number_format($data->price, 2, '.','')}}</span>
                         </div>
                         <div class="col-md-12 col-6 avaibility-box">
                             <span class="text">Avaibility:</span>
@@ -59,7 +64,7 @@
                         </div>
                         <div class="collapse" id="collapseDiscription">
                             <div class="card card-body">
-                                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                {{$data->discription}}
                             </div>
                         </div>
                     </div>
@@ -88,16 +93,18 @@
 
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="3000">
+            @for($i=0; $i<$slideNum; $i++) <div class="carousel-item {{$i==0 ? 'active' :''}}" data-bs-interval="{{$i!=$slideNum-1 ||$i!=0 ? '3000' : ''}}">
                 <div class="row justify-content-center">
                     <div class="col-md-9">
                         <div class="row justify-content-between">
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
+                            @for($j = $i*$itemNum; $j < ($i+1)*$itemNum && $j < count($relatedPrds); $j++) <div class="col-md-3 col-6">
+                                <a href="{{route('product-detail', $relatedPrds[$j]->id)}}">
                                     <div class="product-item">
                                         <div class="image">
+                                            @if($relatedPrds[$j]->is_top == 1)
                                             <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/1.webp')}}" class="d-block w-100 product-img" alt="...">
+                                            @endif
+                                            <img src="{{asset('storage/'.$relatedPrds[$j]->image->path)}}" class="d-block w-100 product-img" alt="...">
                                             <div class="action-btn">
                                                 <button type="button" class="btn btn-outline-light">
                                                     <i class="fal fa-cart-plus icon-btn"></i>
@@ -110,350 +117,26 @@
                                         <div class="discription">
                                             <div class="row">
                                                 <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
+                                                    <span class="name">{{$relatedPrds[$j]->name}}</span>
                                                 </div>
                                                 <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
+                                                    <span class="price">${{number_format($relatedPrds[$j]->price, 2, '.','')}}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/2.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/3.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/1.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
                         </div>
                     </div>
+                    @endfor
                 </div>
-            </div>
-
-            <div class="carousel-item" data-bs-interval="">
-                <div class="row justify-content-center">
-                    <div class="col-md-9">
-                        <div class="row justify-content-between">
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/1.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/2.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/3.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/1.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item" data-bs-interval="3000">
-                <div class="row justify-content-center">
-                    <div class="col-md-9">
-                        <div class="row justify-content-between">
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/1.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/2.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/3.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <a href="http://">
-                                    <div class="product-item">
-                                        <div class="image">
-                                            <span class="badge rounded-pill bg-success is-new-product">New</span>
-                                            <img src="{{asset('assets/img/product/1.webp')}}" class="d-block w-100 product-img" alt="...">
-                                            <div class="action-btn">
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-cart-plus icon-btn"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-outline-light">
-                                                    <i class="fal fa-heart icon-btn"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="discription">
-                                            <div class="row">
-                                                <div class="col-md-8 name-box">
-                                                    <span class="name">sparkling earrings</span>
-                                                </div>
-                                                <div class="col-md-4 price-box">
-                                                    <span class="price">$3.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
-    <!-- end related product  -->
+    @endfor
+
+</div>
+</div>
+<!-- end related product  -->
 
 </div>
 @endsection

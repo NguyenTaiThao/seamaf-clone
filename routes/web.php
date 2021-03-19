@@ -4,7 +4,7 @@ use App\Http\Controllers\admin\CategoryManageController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductManageController;
 use App\Http\Controllers\admin\UserManageController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
@@ -48,7 +48,7 @@ Route::get('/cart', function () {
 
 //-------------------------------------------------------------------------------------------------
 // ADMIN ROUTE
-Route::group(["prefix" => "admin", "namespace" => "admin"], function () {
+Route::group(["prefix" => "admin", "namespace" => ""], function () {
     // auth route 
     Route::get("/login", [AuthController::class, 'index']);
 

@@ -118,6 +118,7 @@ class ProductManageController extends Controller
         try {
             $product->delete();
         } catch (Exception $e) {
+            dd($e);
             return Redirect(back())->withErrors($e->getMessage());
         }
 

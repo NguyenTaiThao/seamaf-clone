@@ -36,7 +36,7 @@
             <div class="dashboard-info comment">
                 <div class="row h-100">
                     <div class="col-md-5 icon">
-                        <i class="fal fa-comment dashboard-icon"></i>
+                        <i class="fal fa-clipboard-list dashboard-icon"></i>
                     </div>
                     <div class="col-md-7 info">
                         <div class="quantity">{{$categoryCount}}</div>

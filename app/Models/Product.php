@@ -29,6 +29,11 @@ class Product extends Model
         return $this->hasOne(Image::class);
     }
 
+    public function images()
+    {
+        return $this->hasOne(Image::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

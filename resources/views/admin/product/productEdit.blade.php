@@ -58,8 +58,8 @@
                                 <div class="form-group mt-2">
                                     <label>Trạng thái</label>
                                     <select name="on_sale" class="form-control">
-                                        <option value=1 <?php if ($data->on_sale == 1) echo 'selected'; ?>>Không sale</option>
-                                        <option value=0 <?php if (!$data->on_sale == 0) echo 'selected'; ?>>Đang sale</option>
+                                        <option value=0 <?php if ($data->on_sale == 1) echo 'selected'; ?>>Không sale</option>
+                                        <option value=1 <?php if (!$data->on_sale == 0) echo 'selected'; ?>>Đang sale</option>
                                     </select>
                                 </div>
 
@@ -81,7 +81,7 @@
                                 <div class="form-group">
                                     <label>Ảnh sản phẩm</label>
                                     <label>
-                                        <input required name='image' id="product-image-input" type="file" onchange="">
+                                        <input name='image' id="product-image-input" type="file" onchange="">
                                         <br>
                                         <div class="image-box">
                                             <img id="product-image" src="{{asset('storage/'.$data->image->path)}}" class="w-75">
@@ -91,7 +91,7 @@
                             </div>
 
                             <div class="col-md-12 mt-4 text-right">
-                                <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
+                                <button name="sbm" type="submit" class="btn btn-success">Cập nhật</button>
                                 <button type="reset" class="btn btn-warning">Làm mới</button>
                             </div>
                         </div>

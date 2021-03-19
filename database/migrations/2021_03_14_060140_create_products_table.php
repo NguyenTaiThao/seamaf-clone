@@ -17,12 +17,12 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger("category_id");
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->string('code')->unique();
+            $table->string('code')->unique()->nullable();
             $table->string('name');
             $table->string('discription');
             $table->integer('price');
-            $table->integer('is_top');
-            $table->integer('on_sale');
+            $table->integer('is_top')->default(0);
+            $table->integer('on_sale')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

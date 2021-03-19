@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class ProductManageController extends Controller
 {
@@ -36,12 +37,12 @@ class ProductManageController extends Controller
             'name' => 'required|unique:products|',
             'discription' => 'required',
             'price' => 'required|gte:0',
-            'is_top' => 'required|in:0,1',
             'on_sale' => 'required|in:0,1',
+            'image' => 'required|image|mimes:jpg,bmp,png,webp,jpeg|max:10240',
         ]);
 
         try {
-            $filepath = $request->file('image')->store("public/products");
+            $filepath = $request->file('image')->store("products");
 
             DB::beginTransaction();
             $productId = Product::create($request->all())->id;
@@ -69,17 +70,41 @@ class ProductManageController extends Controller
     {
         $request->validate([
             'category_id' => 'required|exists:categories,id',
-            'name' => 'required|unique:products|',
+            'name' => 'required|unique:products,name,' . $request->id,
             'discription' => 'required',
             'price' => 'required|gte:0',
-            'is_top' => 'required|in:0,1',
+            'is_top' => 'in:0,1',
             'on_sale' => 'required|in:0,1',
+            'image' => 'image|mimes:jpg,bmp,png,webp,jpeg|max:10240'
+        ]);
+
+        $request->merge([
+            'is_top' => $request->is_top ? 1 : 0
         ]);
 
         try {
-            $product = Product::find($request->id);
-            $product->update($request->all());
+            if ($request->hasFile('image')) {
+
+                DB::beginTransaction();
+
+                $product = Product::find($request->id);
+                $product->update($request->all());
+
+                $newFilePath = $request->file('image')->store("products");
+                $image = Image::find($product->image->id);
+                $image->update(['path' => $newFilePath]);
+                Storage::delete($product->image->path);
+
+                DB::commit();
+            } else {
+                $product = Product::find($request->id);
+                $product->update($request->all());
+            }
         } catch (Exception $e) {
+            if ($request->hasFile('image')) {
+                DB::rollBack();
+            }
+            dd($e);
             return Redirect(back())->withErrors($e->getMessage())->withInput();
         }
 

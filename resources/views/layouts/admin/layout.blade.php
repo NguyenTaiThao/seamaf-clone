@@ -33,6 +33,7 @@ $user = Auth::user();
 
     <!-- inlude javascript -->
     <script src="assets/bootstrap-5.0.0-beta2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -120,7 +121,7 @@ $user = Auth::user();
         </div>
     </div>
 
-
+    @yield('script')
 </body>
 
 </html>

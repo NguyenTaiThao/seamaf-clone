@@ -10,11 +10,13 @@
 }
 
 /* CSS FOR ADD PRODUCT  */
-.add-product .image-box{
+.add-product .image-box,
+.edit-product .image-box{
     padding-top: 10px;
 }
 
-.add-product .image-box img{
+.add-product .image-box img,
+.edit-product .image-box img{
     border: solid 1.5px #dbdbdb;
     padding: 4px;
     border-radius: 5px;

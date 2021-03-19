@@ -20,62 +20,46 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12 bg-white">
+        <div class="col-lg-12 bg-white edit-product">
             <div class="panel panel-default m-md-5 m-2">
                 <div class="panel-body">
                     <form role="form" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @if($errors->any())
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger text-center">
+                                    {{$errors->all()[0]}}
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
-                                    <input required name="prd_name" class="form-control" placeholder="" value="{{$data->name}}">
+                                    <input required name="name" class="form-control" placeholder="" value="{{$data->name}}">
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label>Giá sản phẩm</label>
-                                    <input required name="prd_price" type="number" min="0" class="form-control" value="{{$data->price}}">
-                                </div>
-                                <div class="form-group mt-2">
-                                    <label>Bảo hành</label>
-                                    <input required name="prd_warranty" type="text" class="form-control">
-                                </div>
-                                <div class="form-group mt-2">
-                                    <label>Phụ kiện</label>
-                                    <input required name="prd_accessories" type="text" class="form-control">
-                                </div>
-                                <div class="form-group mt-2">
-                                    <label>Khuyến mãi</label>
-                                    <input required name="prd_promotion" type="text" class="form-control">
-                                </div>
-                                <div class="form-group mt-2">
-                                    <label>Tình trạng</label>
-                                    <input required name="prd_new" type="text" class="form-control">
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Ảnh sản phẩm</label>
-
-                                    <input required name="prd_image" type="file" onchange="">
-                                    <br>
-                                    <div>
-                                        <img id="output_img" src="img/download.jpeg">
-                                    </div>
+                                    <input required name="price" type="number" min="0" class="form-control" value="{{$data->price}}">
                                 </div>
                                 <div class="form-group mt-2">
                                     <label>Danh mục</label>
-                                    <select name="cat_id" class="form-control">
-                                        <option value=1 selected>Còn hàng</option>
-                                        <option value=0>Hết hàng</option>
+                                    <select name="category_id" class="form-control">
+                                        <option value=-1 <?php if ($data->category_id == null) echo 'selected'; ?>>-- CHỌN DANH MỤC --</option>
+                                        @foreach($categories as $category)
+                                        <option value="{{$category->id}}" <?php if ($data->category_id == $category->id) echo 'selected'; ?>>{{$category->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label>Trạng thái</label>
-                                    <select name="prd_status" class="form-control">
-                                        <option value=1 selected>Còn hàng</option>
-                                        <option value=0>Hết hàng</option>
+                                    <select name="on_sale" class="form-control">
+                                        <option value=1 <?php if ($data->on_sale == 1) echo 'selected'; ?>>Không sale</option>
+                                        <option value=0 <?php if (!$data->on_sale == 0) echo 'selected'; ?>>Đang sale</option>
                                     </select>
                                 </div>
 
@@ -83,16 +67,29 @@
                                     <label>Sản phẩm nổi bật</label>
                                     <div class="checkbox">
                                         <label>
-                                            <input name="prd_featured" type="checkbox" value=1>Nổi bật
+                                            <input name="is_top" type="checkbox" value=1 <?php if ($data->is_top == 1) echo 'checked'; ?>>Nổi bật
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group mt-2">
                                     <label>Mô tả sản phẩm</label>
-                                    <textarea required name="prd_details" class="form-control" rows="3"></textarea>
+                                    <textarea required name="discription" class="form-control" rows="3">{{$data->discription}}</textarea>
                                 </div>
 
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Ảnh sản phẩm</label>
+                                    <label>
+                                        <input required name='image' id="product-image-input" type="file" onchange="">
+                                        <br>
+                                        <div class="image-box">
+                                            <img id="product-image" src="{{asset('storage/'.$data->image->path)}}" class="w-75">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
                             <div class="col-md-12 mt-4 text-right">
                                 <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
                                 <button type="reset" class="btn btn-warning">Làm mới</button>
@@ -104,4 +101,26 @@
         </div><!-- /.col-->
     </div><!-- /.row -->
 </div>
+@endsection
+
+
+<!-- script section  -->
+@section('script')
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#product-image').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#product-image-input").change(function() {
+        readURL(this);
+    });
+</script>
 @endsection

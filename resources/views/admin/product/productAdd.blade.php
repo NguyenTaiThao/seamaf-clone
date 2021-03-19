@@ -81,7 +81,7 @@
                                 <div class="form-group">
                                     <label>Ảnh sản phẩm</label>
                                     <label>
-                                        <input required name='image' type="file" onchange="">
+                                        <input required name='image' id="product-image-input" type="file" onchange="">
                                         <br>
                                         <div class="image-box">
                                             <img id="product-image" src="{{asset('assets/img/product/image-select.webp')}}" class="w-75">
@@ -101,4 +101,26 @@
         </div><!-- /.col-->
     </div><!-- /.row -->
 </div>
+@endsection
+
+
+<!-- script section  -->
+@section('script')
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#product-image').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#product-image-input").change(function() {
+        readURL(this);
+    });
+</script>
 @endsection

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProductManageController extends Controller
 {
+    //show
     public function index()
     {
         $data = Product::with(['category', 'image'])->orderBy('id', 'desc')->paginate(Config::get('constant.PAGINATION'));
@@ -26,6 +27,8 @@ class ProductManageController extends Controller
         return view('admin.product.productAdd', ['categories' => $categories]);
     }
 
+
+    //add
     public function postAdd(Request $request)
     {
         $request->validate([
@@ -54,6 +57,8 @@ class ProductManageController extends Controller
         return Redirect(route('product-manage'));
     }
 
+
+    //edit
     public function getEdit(Product $product)
     {
         $categories = Category::all();
@@ -81,6 +86,8 @@ class ProductManageController extends Controller
         return Redirect(route('product-manage'));
     }
 
+
+    //delete
     public function delete(Product $product)
     {
         try {

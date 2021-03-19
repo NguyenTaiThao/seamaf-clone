@@ -20,6 +20,7 @@
     <link menu-item rel="stylesheet" href="css/productDetail.css">
     <link menu-item rel="stylesheet" href="css/authentication.css">
     <link menu-item rel="stylesheet" href="css/cart.css">
+    <link menu-item rel="stylesheet" href="css/category.css">
 
 
     <!-- include javascript  -->

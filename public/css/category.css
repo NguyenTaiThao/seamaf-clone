@@ -1,0 +1,34 @@
+.category .category-left{
+    padding-right: 20px;
+}
+.category .category-left .category-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: #777;
+}
+
+.category .category-left ul.list-group li{
+    font-size: 11px;
+    font-weight: 550;
+    padding-left:0;
+    padding-top: 10px;
+    letter-spacing: 0.75px;
+}
+
+.category .category-left ul.list-group li::before{
+    content: "〇";
+    color: #f51167;
+}
+
+.category .category-left ul.list-group li a{
+    color: #333;
+}
+
+.category .category-left ul.list-group li:hover::before{
+    content: "◎";
+    color:#f51167;
+}
+
+.category .category-left ul.list-group li:hover > a{
+    color:#f51167;
+}

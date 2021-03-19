@@ -14,8 +14,10 @@ $slideNum = ceil(count($relatedPrds) / $itemNum);
                 <span class="title">BRIDAL ACCESORIES</span>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item">Library</li>
+                        <li class="breadcrumb-item">
+                            <a href="{{route('homepage')}}"><i class="fas fa-home-lg-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item">{{$data->name}}</li>
                     </ol>
                 </nav>
             </div>

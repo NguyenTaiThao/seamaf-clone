@@ -1,7 +1,7 @@
 <!-- start header -->
 <header class="header navbar-light bg-light row align-items-center">
     <div class="col-md-2 offset-md-1 header-box d-flex align-items-center justify-content-center justify-content-md-start">
-        <a class="brand" href="#">RVM SeaMaf</a>
+        <a class="brand" href="{{route('homepage')}}">RVM SeaMaf</a>
     </div>
 
     <div class="col-md-4 search-box">

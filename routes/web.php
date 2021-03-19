@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductManageController;
 use App\Http\Controllers\admin\UserManageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Redirect;
@@ -22,13 +23,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+//-------------------------------------------------------------------------------------------------
 // CLIENT ROUTE
-Route::get('/', function () {
-    return view('index');
-})->name("homepage");
+Route::get('/', [HomePageController::class, 'index'])->name("homepage");
 
-Route::get('/product-detail', function () {
+Route::get('/product-detail/{product}', function () {
     return view('product.productDetail');
 })->name("product-detail");
 
@@ -44,8 +43,9 @@ Route::get('/cart', function () {
     return view('cart.cart');
 })->name('cart');
 
-// ADMIN ROUTE
 
+//-------------------------------------------------------------------------------------------------
+// ADMIN ROUTE
 Route::group(["prefix" => "admin", "namespace" => "admin"], function () {
     // auth route 
     Route::get("/login", [AuthController::class, 'index']);

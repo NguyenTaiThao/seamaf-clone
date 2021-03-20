@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Error;
+use App\Models\Admin;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +14,7 @@ class UserManageController extends Controller
 {
     public function index()
     {
-        $data = User::orderBy('id', 'desc')->paginate(Config::get('constant.PAGINATION'));
+        $data = Admin::orderBy('id', 'desc')->paginate(Config::get('constant.PAGINATION'));
         return view('admin.user.userManage', ['data' => $data]);
     }
 
@@ -30,12 +29,11 @@ class UserManageController extends Controller
             'name' => "required|min:8|max:255",
             'email' => "required|email|unique:users",
             'password' => 'required|min:8|confirmed',
-            'is_admin' => 'required|in:0,1',
         ]);
 
         try {
-            $user = new User($request->all());
-            $user->save();
+            $admin = new Admin($request->all());
+            $admin->save();
         } catch (Exception $e) {
             return Redirect(back())->withErrors($e->getMessage())->withInput();
         }
@@ -43,9 +41,9 @@ class UserManageController extends Controller
         return Redirect(route('user-manage'));
     }
 
-    public function getEdit(User $user)
+    public function getEdit(Admin $admin)
     {
-        return view('admin.user.userEdit', ['data' => $user]);
+        return view('admin.user.userEdit', ['data' => $admin]);
     }
 
     public function postEdit(Request $request)
@@ -53,22 +51,21 @@ class UserManageController extends Controller
         $request->validate([
             'name' => "required|min:8|max:255",
             'email' => "required|email|unique:users,email," . $request->id,
-            'is_admin' => 'required|in:0,1',
         ]);
 
-        $user = User::find($request->id);
-        $user->update($request->all());
+        $admin = Admin::find($request->id);
+        $admin->update($request->all());
 
         return Redirect(route('user-manage'));
     }
 
-    public function delete(User $user)
+    public function delete(Admin $admin)
     {
-        if ($user->id == Auth::user()->id) {
+        if ($admin->id == Auth::guard('admin')->user()->id) {
             return Redirect(route('user-manage'))->withErrors(["You can't remove your own account."]);
         } else {
             try {
-                $user->delete();
+                $admin->delete();
             } catch (Exception $e) {
                 return Redirect(route('user-manage'))->withErrors($e->getMessage());
             }

@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        if (Auth::check()) {
+        if (Auth::guard('admin')->check()) {
             return Redirect(route('dashboard'));
         } else {
             return view("admin.login");
@@ -21,8 +21,8 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        if (Auth::check()) {
-            Auth::logout();
+        if (Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 

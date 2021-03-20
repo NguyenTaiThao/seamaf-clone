@@ -30,11 +30,11 @@ Route::middleware('auth:admin')->group(function () {
         Route::post('/add', [UserManageController::class, 'postAdd']);
 
         //edit
-        Route::get('/edit/{user}', [UserManageController::class, 'getEdit'])->name('user-manage-edit');
+        Route::get('/edit/{admin}', [UserManageController::class, 'getEdit'])->name('user-manage-edit');
         Route::post('/edit/{id}', [UserManageController::class, 'postEdit']);
 
         //delete
-        Route::get('/delete/{user}', [UserManageController::class, 'delete'])->name('user-manage-delete');
+        Route::get('/delete/{admin}', [UserManageController::class, 'delete'])->name('user-manage-delete');
     });
 
     // product 

@@ -54,13 +54,6 @@
                                 <label>Nhập lại mật khẩu</label>
                                 <input class="form-control" disabled>
                             </div>
-                            <div class="form-group">
-                                <label>Quyền</label>
-                                <select name="is_admin" class="form-control">
-                                    <option value="1" <?php if ($data->is_admin) echo "selected" ?>>Admin</option>
-                                    <option value="0" <?php if (!$data->is_admin) echo "selected" ?>>Member</option>
-                                </select>
-                            </div>
                             <div class="mt-3">
                                 <button name="sbm" type="submit" class="btn btn-success">Cập nhật</button>
                                 <button type="reset" class="btn btn-warning">Làm mới</button>

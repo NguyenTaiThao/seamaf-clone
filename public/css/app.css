@@ -11,7 +11,7 @@ body {
     font-size: 14px;
 }
 
-header{
+header {
     margin: 0 !important;
 }
 
@@ -24,7 +24,7 @@ header{
     cursor: pointer;
 }
 
-a{
+a {
     text-decoration: none !important;
 }
 
@@ -51,6 +51,23 @@ a{
     background-color: #f8f9fa;
 }
 
+.header .header-extension .cart-box {
+    color: #333;
+}
+
+.header .header-extension .extension-icon {
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+}
+.header .header-extension .cart-box .badge {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-size: 10px;
+    background-color: #f51167 !important;
+}
+
 /* CSS FOR NAVBAR */
 .navbar .menu-item {
     padding-left: 15px !important;
@@ -67,7 +84,7 @@ a{
 }
 
 ul.sub-menu-list {
-    padding:0;
+    padding: 0;
     height: 60vh;
     overflow-x: auto;
 }
@@ -238,7 +255,7 @@ footer .contact .social-media .media:hover > .media-icon {
 }
 
 /* CSS FOR PRODUCT ITEM  */
-.product-item .image{
+.product-item .image {
     /* width: 100%; */
     position: relative;
 }
@@ -259,7 +276,7 @@ footer .contact .social-media .media:hover > .media-icon {
     padding: 10px 0px;
 }
 
-.product-item .discription .price-box{
+.product-item .discription .price-box {
     text-align: right;
 }
 
@@ -275,7 +292,7 @@ footer .contact .social-media .media:hover > .media-icon {
     color: #333 !important;
 }
 
-.product-item .image .action-btn{
+.product-item .image .action-btn {
     position: absolute;
     z-index: 99;
     bottom: 5%;
@@ -284,10 +301,9 @@ footer .contact .social-media .media:hover > .media-icon {
     flex-direction: column;
 }
 
-.product-item .image .action-btn button:last-child{
+.product-item .image .action-btn button:last-child {
     margin-top: 5px;
 }
-
 
 @keyframes floatUp {
     0% {

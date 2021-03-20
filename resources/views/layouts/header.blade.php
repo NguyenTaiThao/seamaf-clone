@@ -22,10 +22,11 @@
                 <span class="cursor">Wishlist</span>
             </div>
             <div class="col-4">
-                <a href="{{asset('/cart')}}">
-                    <i class="fal fa-shopping-cart extension-icon cursor"></i>
+                <a href="{{asset('/cart')}}" class="cart-box">
+                    <i class="fal fa-shopping-cart extension-icon cursor">
+                        <span class="badge bg-danger">4</span>
+                    </i>
                     <span class="cursor">Shopping cart</span>
-                    <span class="badge bg-danger">4</span>
                 </a>
             </div>
         </div>

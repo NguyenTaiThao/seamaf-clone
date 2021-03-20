@@ -28,24 +28,24 @@ class AuthController extends Controller
         if(Auth::attempt($credentials)){
             return Redirect(route('homepage'));
         }else{
-            return Redirect(route('sign-ip'))
-            ->withErrors('Wrong account or wron password')
+            return Redirect(route('sign-in'))
+            ->withErrors('Wrong account or wrong password')
             ->withInput(
                 $request->except('password'),
             );
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         if (Auth::check()) {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
-            return Redirect(route('sign-in'));
+            return Redirect(route('homepage'));
         } else {
-            return Redirect(route('sign-in'));
+            return Redirect(route('homepage'));
         }
     }
 

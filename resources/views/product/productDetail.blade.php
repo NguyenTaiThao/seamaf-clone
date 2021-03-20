@@ -129,8 +129,8 @@ $slideNum = ceil(count($relatedPrds) / $itemNum);
                                     </div>
                                 </a>
                         </div>
+                        @endfor
                     </div>
-                    @endfor
                 </div>
         </div>
     </div>

@@ -1,3 +1,8 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+?>
+
 <!-- start nav -->
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <div class="container-fluid d-flex justify-content-md-between justify-content-end offset-md-1">
@@ -31,12 +36,34 @@
                 <li class="nav-item">
                     <a class="nav-link menu-item" href="#">Contact</a>
                 </li>
+                @if(!Auth::check())
                 <li class="nav-item">
                     <a class="nav-link menu-item" href="{{route('sign-in')}}">Sign In</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-item" href="{{route('sign-up')}}">Sign Up</a>
                 </li>
+                @else
+                <li class="nav-item dropdown">
+                    <a class="nav-link menu-item dropdown-toggle" id="usertoggle" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+                        <i class="far fa-user"></i> {{Auth::user()->name}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="usertoggle">
+                        <ul class="sub-menu-list h-auto">
+                            <li class="sub-menu-item">
+                                <a class="dropdown-item" href="{{route('category', $category->id)}}">
+                                    Thông tin tài khoản
+                                </a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a class="dropdown-item" href="{{route('logout', Auth::user()->id)}}">
+                                    Đăng xuất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @endif
             </ul>
 
         </div>

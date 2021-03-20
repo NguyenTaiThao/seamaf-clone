@@ -29,9 +29,13 @@ Route::get('/category/{category}', [CategoryController::class, 'index'])->name("
 
 Route::get('/sign-up', [AuthController::class, 'signUp'])->name("sign-up");
 
-Route::post('sign-up', [AuthController::class, 'Auth']);
+Route::post('/sign-up', [AuthController::class, 'Auth']);
 
 Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
+
+Route::post('/sign-in', [AuthController::class, 'auth']);
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/cart', function () {
     return view('cart.cart');

@@ -38,7 +38,7 @@
     <!-- end nav  -->
 
     <!-- start content -->
-    <main>
+    <main class="container-fluid">
         @yield("content")
     </main>
     <!-- end content -->

@@ -7,60 +7,72 @@
             <div class="authentication-box">
                 <div class="row">
                     <div class="col-md-5 background-img px-0"></div>
-
                     <div class="col-md-7 authentication-form d-flex flex-column justify-content-center px-0">
-                        <div class="row title">
-                            <span>Login to your account</span>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-10 form-section">
-                                <div class="row">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text basic-addon" id="">
-                                            <i class="fas fa-envelope"></i>
-                                        </span>
-                                        <input type="text" class="form-control authentication-input remove-outline" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+                        <form action="" method="post">
+                            @csrf
+
+                            <div class="row title">
+                                <span>Login to your account</span>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-10 form-section">
+                                    @if($errors->any())
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-danger text-center">
+                                                {{$errors->all()[0]}}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text basic-addon" id="">
-                                            <i class="fas fa-key"></i>
-                                        </span>
-                                        <input type="text" class="form-control authentication-input remove-outline" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                                    @endif
+                                    <div class="row">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text basic-addon" id="">
+                                                <i class="fas fa-envelope"></i>
+                                            </span>
+                                            <input type="text" name="email" class="form-control authentication-input remove-outline" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 d-grid">
-                                        <button type="button" class="btn btn-primary authentication-btn remove-outline">Login</button>
+                                    <div class="row">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text basic-addon" id="">
+                                                <i class="fas fa-key"></i>
+                                            </span>
+                                            <input type="password" name="password" class="form-control authentication-input remove-outline" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row other-auth-text">
-                                    <div class="col-md-12">
-                                        <span>or login with</span>
+                                    <div class="row">
+                                        <div class="col-md-12 d-grid">
+                                            <button type="submit" class="btn btn-primary authentication-btn remove-outline">Login</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row other-auth-btn">
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-primary w-100">Facebook</button>
+                                    <div class="row other-auth-text">
+                                        <div class="col-md-12">
+                                            <span>or login with</span>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-danger w-100">Google</button>
+                                    <div class="row other-auth-btn">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary w-100">Facebook</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-danger w-100">Google</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row auth-divider">
-                                    <div class="col-md-12">
-                                        <hr>
+                                    <div class="row auth-divider">
+                                        <div class="col-md-12">
+                                            <hr>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row switch-auth">
-                                    <div class="col-md-12">
-                                        <span>Don't have an account?</span>
-                                        <a href="{{asset('sign-in')}}">Click here</a>
+                                    <div class="row switch-auth">
+                                        <div class="col-md-12">
+                                            <span>Don't have an account?</span>
+                                            <a href="{{asset('sign-in')}}">Click here</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

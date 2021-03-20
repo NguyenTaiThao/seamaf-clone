@@ -11,13 +11,13 @@ $slideNum = ceil(count($relatedPrds) / $itemNum);
     <div class="header navbar-light bg-light row align-items-center">
         <div class="row">
             <div class="col-md-10 offset-md-1 breadcrumb-box">
-                <span class="title">BRIDAL ACCESORIES</span>
+                <span class="title text-uppercase">{{$data->name}}</span>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{route('homepage')}}"><i class="fas fa-home-lg-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item">{{$data->name}}</li>
+                        <li class="breadcrumb-item">Product detail</li>
                     </ol>
                 </nav>
             </div>

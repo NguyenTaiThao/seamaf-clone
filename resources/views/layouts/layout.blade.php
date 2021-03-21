@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>SeaMaf</title>
 
     <!-- inlude resource  -->
@@ -15,6 +15,7 @@
 
     <link menu-item rel="stylesheet" href="assets/bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css">
     <link menu-item rel="stylesheet" href="assets/fontawesome-pro-5.15.1-web/css/all.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
     <link menu-item rel="stylesheet" href="css/app.css">
     <link menu-item rel="stylesheet" href="css/homepage.css">
     <link menu-item rel="stylesheet" href="css/productDetail.css">
@@ -25,9 +26,13 @@
 
     <!-- include javascript  -->
     <script src="assets/bootstrap-5.0.0-beta2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body>
+    {!! Toastr::message() !!}
+
     <!-- start header -->
     @include("layouts.header")
     <!-- end header -->

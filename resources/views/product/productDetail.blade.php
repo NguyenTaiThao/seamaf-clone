@@ -34,53 +34,57 @@ $slideNum = ceil(count($relatedPrds) / $itemNum);
                     <img src="{{asset('storage/'.$data->image->path)}}" class="w-100">
                 </div>
                 <div class="col-md-6 discription">
-                    <div class="row name-box">
-                        <span class="name text-uppercase">{{$data->name}}</span>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-md-12 col-6 price-box">
-                            <span class="price">${{number_format($data->price, 2, '.','')}}</span>
+                    <form action="{{route('add-cart')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="productId" value="{{$data->id}}">
+                        <div class="row name-box">
+                            <span class="name text-uppercase">{{$data->name}}</span>
                         </div>
-                        <div class="col-md-12 col-6 avaibility-box">
-                            <span class="text">Avaibility:</span>
-                            <span class="avaibility">In Stock</span>
-                        </div>
-                    </div>
-                    <div class="quantity-box">
                         <div class="row align-items-center">
-                            <div class="col-md-2 col-4">
-                                <span class="text">QUANTITY</span>
+                            <div class="col-md-12 col-6 price-box">
+                                <span class="price">${{number_format($data->price, 2, '.','')}}</span>
                             </div>
-                            <div class="col-md-2 col-3">
-                                <input type="number" name="" class="form-control" id="" value="1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cart-btn-box d-flex justify-content-md-start justify-content-center">
-                        <button type="button" class="btn btn-danger cart-btn">ADD TO CART</button>
-                    </div>
-                    <div class="discription-text">
-                        <div class="toggle-box d-flex justify-content-between align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiscription" aria-expanded="false" aria-controls="collapseExample">
-                            <span>DISCRIPTION</span>
-                            <i class="far fa-chevron-down"></i>
-                        </div>
-                        <div class="collapse" id="collapseDiscription">
-                            <div class="card card-body">
-                                {{$data->discription}}
+                            <div class="col-md-12 col-6 avaibility-box">
+                                <span class="text">Avaibility:</span>
+                                <span class="avaibility">In Stock</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="shipping-return">
-                        <div class="toggle-box d-flex justify-content-between align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShippingReturn" aria-expanded="false" aria-controls="collapseExample">
-                            <span>SHIPPING & RETURN</span>
-                            <i class="far fa-chevron-down"></i>
-                        </div>
-                        <div class="collapse" id="collapseShippingReturn">
-                            <div class="card card-body">
-                                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                        <div class="quantity-box">
+                            <div class="row align-items-center">
+                                <div class="col-md-2 col-4">
+                                    <span class="text">QUANTITY</span>
+                                </div>
+                                <div class="col-md-2 col-3">
+                                    <input type="number" name="quantity" class="form-control" id="" value="1">
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="cart-btn-box d-flex justify-content-md-start justify-content-center">
+                            <button type="submit" class="btn btn-danger cart-btn">ADD TO CART</button>
+                        </div>
+                        <div class="discription-text">
+                            <div class="toggle-box d-flex justify-content-between align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiscription" aria-expanded="false" aria-controls="collapseExample">
+                                <span>DISCRIPTION</span>
+                                <i class="far fa-chevron-down"></i>
+                            </div>
+                            <div class="collapse" id="collapseDiscription">
+                                <div class="card card-body">
+                                    {{$data->discription}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shipping-return">
+                            <div class="toggle-box d-flex justify-content-between align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShippingReturn" aria-expanded="false" aria-controls="collapseExample">
+                                <span>SHIPPING & RETURN</span>
+                                <i class="far fa-chevron-down"></i>
+                            </div>
+                            <div class="collapse" id="collapseShippingReturn">
+                                <div class="card card-body">
+                                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

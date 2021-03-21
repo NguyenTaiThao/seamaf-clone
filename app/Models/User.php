@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable,SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes;
     use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
     /**
      * The attributes that are mass assignable.
@@ -45,4 +45,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'carts');
+    }
+
+    public function attachProduct($productId, $quantity)
+    {
+        $this->products()->attach($productId, ['quantity' => $quantity]);
+    }
 }

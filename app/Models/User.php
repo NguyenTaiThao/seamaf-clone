@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Config;
 
 class User extends Authenticatable
 {
@@ -48,11 +49,18 @@ class User extends Authenticatable
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'carts');
+        return $this->belongsToMany(Product::class, 'carts')
+        ->wherePivot('status', Config::get('constant.CART_STATUS.IN_CART'))
+        ->withPivot('quantity');
     }
 
     public function attachProduct($productId, $quantity)
     {
         $this->products()->attach($productId, ['quantity' => $quantity]);
+    }
+
+    public function detachProduct($productId)
+    {
+        $this->products()->detach($productId);
     }
 }

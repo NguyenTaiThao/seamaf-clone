@@ -9,4 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Cart extends Model
 {
     use HasFactory, SoftDeletes;
+    public function product(){
+        return $this->hasOne(Product::class);
+    }
 }

@@ -45,3 +45,5 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
 Route::post('/add-cart', [CartController::class, 'add'])->name('add-cart');
 
+Route::get('/delete-cart/{productId}', [CartController::class, 'delete'])->name('delete-cart');
+

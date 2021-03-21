@@ -17,17 +17,30 @@ class CartController extends Controller
     {
         $data = [];
         if (Auth::check()) {
-            $data = Auth::user()->products->where(['status', '=', Config::get('constant.CART_STATUS.IN_CART')]);
+            $data = Auth::user()->products;
         }
         return view('cart.cart', ['data' => $data]);
     }
 
-    //add cart
+    //add cart item
     public function add(Request $request)
     {
         if (Auth::check()) {
             Auth::user()->attachProduct($request->productId, $request->quantity);
             Toastr::success('Product was added to your cart', 'Success');
+            return Redirect(route('cart'));
+        } else {
+            Toastr::warning('Login is required when using cart function.', 'Warning');
+            return Redirect(route('sign-in'));
+        }
+    }
+
+    //delete cart item
+    public function delete(Request $request)
+    {
+        if (Auth::check()) {
+            Auth::user()->detachProduct($request->productId);
+            Toastr::success('Product was removed from your cart', 'Success');
             return Redirect(route('cart'));
         } else {
             Toastr::warning('Login is required when using cart function.', 'Warning');

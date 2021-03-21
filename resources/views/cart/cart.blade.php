@@ -1,5 +1,4 @@
 @extends('layouts.layout')
-
 @section('content')
 <div class="content">
     <!-- start breadcrumb -->
@@ -37,40 +36,28 @@
                                 <div class="col-2 cart-title size-title"><span>Size</span></div>
                                 <div class="col-md-1 col-2 cart-title price-title"><span>Price</span></div>
                             </div>
+                            @foreach($data as $item)
                             <div class="row align-items-center cart-item px-3">
                                 <div class="col-6 name">
-                                    <span>sparkling earring (type3)</span>
+                                    <span>{{$item->name}}</span>
                                 </div>
                                 <div class="col-2 quantity">
-                                    <input type="number" class="form-control quantity-input" id="" value="1" min="0">
+                                    <input type="number" class="form-control quantity-input" id="" value="{{$item->pivot->quantity}}" min="0">
                                 </div>
                                 <div class="col-2 size">
                                     <span>L</span>
                                 </div>
                                 <div class="col-md-1 col-2 price">
-                                    <span>$3.00</span>
+                                    <span>${{$item->price}}</span>
                                 </div>
                                 <div class="col-md-1 del-btn">
-                                    <button type="button" class="btn btn-outline-danger">Xóa</button>
+                                    <a href="{{route('delete-cart', $item->id)}}">
+                                        <button type="button" class="btn btn-outline-danger">Xóa</button>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="row align-items-center cart-item px-3">
-                                <div class="col-6 name">
-                                    <span>sparkling earring (type3)</span>
-                                </div>
-                                <div class="col-2 quantity">
-                                    <input type="number" class="form-control quantity-input" id="" value="1" min="0">
-                                </div>
-                                <div class="col-2 size">
-                                    <span>L</span>
-                                </div>
-                                <div class="col-md-1 col-2 price">
-                                    <span>$3.00</span>
-                                </div>
-                                <div class="col-md-1 del-btn">
-                                    <button type="button" class="btn btn-outline-danger">Xóa</button>
-                                </div>
-                            </div>
+                            @endforeach
+
                             <div class="d-flex justify-content-md-end align-items-center total-box">
                                 <div class="col-md-2 col-6 text-md-right title">
                                     <span>Tổng cộng</span>

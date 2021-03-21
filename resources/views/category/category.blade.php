@@ -38,7 +38,7 @@
             <div class="col-md-9 category-right">
                 <div class="row justify-content-center row-product">
                     <div class="col-md-12">
-                        <div class="row justify-content-between">
+                        <div class="row">
                             @foreach($data->products as $prd)
                             <div class="col-md-3 col-6">
                                 <a href="{{route('product-detail', $prd->id)}}">

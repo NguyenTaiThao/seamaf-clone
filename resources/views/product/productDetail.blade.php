@@ -31,7 +31,7 @@ $slideNum = ceil(count($relatedPrds) / $itemNum);
         <div class="col-md-10 offset-md-1 mt-4">
             <div class="row">
                 <div class="col-md-6 image">
-                    <img src="{{asset('assets/img/product/1.webp')}}" class="w-100">
+                    <img src="{{asset('storage/'.$data->image->path)}}" class="w-100">
                 </div>
                 <div class="col-md-6 discription">
                     <div class="row name-box">
@@ -98,7 +98,7 @@ $slideNum = ceil(count($relatedPrds) / $itemNum);
             @for($i=0; $i<$slideNum; $i++) <div class="carousel-item {{$i==0 ? 'active' :''}}" data-bs-interval="{{$i!=$slideNum-1 ||$i!=0 ? '3000' : ''}}">
                 <div class="row justify-content-center">
                     <div class="col-md-9">
-                        <div class="row justify-content-between">
+                        <div class="row">
                             @for($j = $i*$itemNum; $j < ($i+1)*$itemNum && $j < count($relatedPrds); $j++) <div class="col-md-3 col-6">
                                 <a href="{{route('product-detail', $relatedPrds[$j]->id)}}">
                                     <div class="product-item">

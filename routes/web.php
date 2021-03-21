@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +38,8 @@ Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
 Route::post('/sign-in', [AuthController::class, 'auth']);
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('/add-cart', [CartController::class, 'add']);
 
 Route::get('/cart', function () {
     return view('cart.cart');

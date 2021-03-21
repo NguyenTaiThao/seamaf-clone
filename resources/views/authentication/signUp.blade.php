@@ -20,7 +20,7 @@
                                             <span class="input-group-text basic-addon" id="">
                                                 <i class="fas fa-user"></i>
                                             </span>
-                                            <input type="text" class="form-control authentication-input remove-outline" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                                            <input type="text" name="name" class="form-control authentication-input remove-outline" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -28,7 +28,7 @@
                                             <span class="input-group-text basic-addon" id="">
                                                 <i class="fas fa-envelope"></i>
                                             </span>
-                                            <input type="text" class="form-control authentication-input remove-outline" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+                                            <input type="text" name="email" class="form-control authentication-input remove-outline" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -36,7 +36,7 @@
                                             <span class="input-group-text basic-addon" id="">
                                                 <i class="fas fa-key"></i>
                                             </span>
-                                            <input type="text" class="form-control authentication-input remove-outline" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                                            <input type="password" name="password" class="form-control authentication-input remove-outline" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -44,7 +44,7 @@
                                             <span class="input-group-text basic-addon" id="">
                                                 <i class="fas fa-key"></i>
                                             </span>
-                                            <input type="text" class="form-control authentication-input remove-outline" placeholder="Confirm Password" aria-label="Username" aria-describedby="basic-addon1">
+                                            <input type="password" name="password_confirmation" class="form-control authentication-input remove-outline" placeholder="Confirm Password" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="row">

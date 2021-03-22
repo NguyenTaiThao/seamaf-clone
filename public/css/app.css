@@ -51,6 +51,10 @@ a {
     background-color: #f8f9fa;
 }
 
+.dropdown-notifications{
+    list-style-type: none;
+}
+
 .header .header-extension .cart-box {
     color: #333;
 }
